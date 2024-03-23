@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { auth, db } from "../firebaseConfig";
 import Graph from "./Graph";
+import { Button } from "@mui/icons-material";
 
 const Stats = ({
   wpm,
@@ -25,13 +26,15 @@ const Stats = ({
   });
 
   const pushToDb = () => {
+    // reference to the 'results' collection
     const resultRef = db.collection("Results");
+
+    // auth object has the details of the current user
     const { uid } = auth.currentUser;
+
+    // case to handle when user has not typed even 1 word (in which case accuracy will be 0)
     if (isNaN(accuracy)) {
-      toast.error("Invalid Test", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
+      toast.error("Invalid Test!", {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -40,6 +43,8 @@ const Stats = ({
       });
       return;
     }
+
+    // add data to db in json format (key-value pairs)
     resultRef
       .add({
         wpm: wpm,
@@ -49,10 +54,7 @@ const Stats = ({
         userId: uid,
       })
       .then((res) => {
-        toast.success("Data pushed to db", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
+        toast.success("Data pushed to db!", {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
@@ -61,10 +63,7 @@ const Stats = ({
         });
       })
       .catch((err) => {
-        toast.error("not able to add data", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
+        toast.error("Unable to save data", {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
@@ -78,10 +77,7 @@ const Stats = ({
     if (auth.currentUser) {
       pushToDb();
     } else {
-      toast.warning("login to save result", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
+      toast.warning("Login to save results", {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -94,16 +90,31 @@ const Stats = ({
   return (
     <div className="stats-box">
       <div className="left">
-        <div className="title">WPM</div>
-        <div className="subtitle">{wpm}</div>
-        <div className="title">Accuracy</div>
-        <div className="subtitle">{accuracy}</div>
-        <div className="title">Characters</div>
-        <div className="subtitle">
-          {correctChars}/{incorrectChars}/{missedChars}/{extraChars}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "30px",
+            justifyContent: "space-between",
+          }}
+        >
+          <div className="title">
+            <div>WPM </div>
+            <div>Accuracy</div>
+            <div>Correct Characters</div>
+            <div>Incorrect Characters</div>
+            <div>Missed Characters</div>
+          </div>
+          <div className="subtitle">
+            <div>{wpm}</div>
+            <div>{accuracy}</div>
+            <div>{correctChars}</div>
+            <div>{incorrectChars}</div>
+            <div>{missedChars}</div>
+          </div>
         </div>
         <div onClick={resetTest} className="restart">
-          Restart
+          RESTART
         </div>
       </div>
       <div className="right">

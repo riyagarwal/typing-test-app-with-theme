@@ -3,8 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
     body{
-        background: ${({theme})=>theme.background};
-        color: ${({theme})=>theme.titleColor};
+        background: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.titleColor};
         margin: 0;
         padding: 0;
     }
@@ -35,7 +35,7 @@ export const GlobalStyles = createGlobalStyle`
         display: flex;
         flex-wrap: wrap;
         font-size: 32px;
-        color: ${({theme})=>theme.typeBoxText}
+        color: ${({ theme }) => theme.typeBoxText}
     }
 
     .word{
@@ -48,7 +48,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .correct{
-        color: ${({theme})=>theme.titleColor};
+        color: ${({ theme }) => theme.titleColor};
     }
 
     .incorrect{
@@ -108,11 +108,13 @@ export const GlobalStyles = createGlobalStyle`
         width: 1000px;
         margin-left: auto;
         margin-right: auto;
+        gap: 40px;
     }
 
     .left{
         width: 30%;
-        padding: 30px;
+        padding: 20px;
+        margin-top: 10px;
     }
 
     .right{
@@ -121,17 +123,30 @@ export const GlobalStyles = createGlobalStyle`
 
     .title{
         font-size: 22px;
-        color: ${({theme})=>theme.typeBoxText}
+        color: ${({ theme }) => theme.typeBoxText};
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
     .subtitle{
-        font-size: 30px;
-        color: ${({theme})=>theme.titleColor};
+        font-size: 22px;
+        color: ${({ theme }) => theme.titleColor};
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
     .restart{
-        font-size: 40px;
-        margin-top: 5px;
+        font-size: 26px;
         cursor: pointer;
+        width: 60%;
+        padding: 5px;
+        margin: auto;
+        margin-top: 50px;
+        border: 1px solid #91E4D1;
+        border-radius: 10px;
     }
 
     .header, .footer{
@@ -160,9 +175,9 @@ export const GlobalStyles = createGlobalStyle`
         width: 1000px;
         margin: auto;
         display: flex;
-        background: ${({theme})=>theme.titleColor};
+        background: ${({ theme }) => theme.titleColor};
         min-height: 15rem;
-        color: ${({theme})=>theme.background};
+        color: ${({ theme }) => theme.background};
         border-radius: 20px;
     }
     .user{

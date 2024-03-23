@@ -2,65 +2,55 @@ import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { auth } from "../firebaseConfig";
-const SignupForm = ({handleClose}) => {
+const SignupForm = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleSubmit = ()=>{
-        if(!email || !password || !confirmPassword){
-            toast.warn('Fill all details', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-            return;
-        }
-        if(password!==confirmPassword){
-            toast.warn('Password mismatch', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-            return;
-        }
-
-        auth.createUserWithEmailAndPassword(email, password).then((res)=>{
-            toast.success('User created!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-            handleClose();
-        }).catch((err)=>{
-            toast.error('Not able to create user', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-        })
-
+  const handleSubmit = () => {
+    if (!email || !password || !confirmPassword) {
+      toast.warn("Please fill all details", {
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
     }
+    if (password !== confirmPassword) {
+      toast.warn("Password mismatch!", {
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    // resolves in a promise
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        toast.success("User created!", {
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        handleClose();
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err && err.message) {
+          toast.error(err.message.split(': ')[1].split('(')[0], { theme: "dark" });
+        } else {
+          toast.error("An error occurred while creating the user.");
+        }
+      });
+  };
 
   return (
     <Box
@@ -71,6 +61,7 @@ const SignupForm = ({handleClose}) => {
         gap: "20px",
       }}
     >
+      {/* Email */}
       <TextField
         type="email"
         variant="outlined"
@@ -85,8 +76,10 @@ const SignupForm = ({handleClose}) => {
             color: "white",
           },
         }}
-        onChange={(e)=>setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
       />
+
+      {/* Password */}
       <TextField
         type="password"
         variant="outlined"
@@ -101,8 +94,10 @@ const SignupForm = ({handleClose}) => {
             color: "white",
           },
         }}
-        onChange={(e)=>setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
       />
+
+      {/* Confirm Password */}
       <TextField
         type="password"
         variant="outlined"
@@ -117,7 +112,7 @@ const SignupForm = ({handleClose}) => {
             color: "white",
           },
         }}
-        onChange={(e)=>setConfirmPassword(e.target.value)}
+        onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <Button variant="contained" size="large" onClick={handleSubmit}>
         Signup

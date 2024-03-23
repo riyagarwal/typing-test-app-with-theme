@@ -93,7 +93,7 @@ const TypingBox = () => {
     //logic for space
     if (e.keyCode === 32) {
       const correctSpans =
-        wordSpanRef[currWordIndex].current.querySelectorAll(".correct"); //get out all spans with correct classname
+        wordSpanRef[currWordIndex].current.querySelectorAll(".correct"); //get all spans with 'correct' classname
 
       if (correctSpans.length === allChildSpan.length) {
         setCorrectWords(correctWords + 1);

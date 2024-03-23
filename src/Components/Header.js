@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div className="header">
         <div className="logo">
-            LOGO
+            TYPING TEST
         </div>
         <div className="user-btn">
             <AccountCircle/>

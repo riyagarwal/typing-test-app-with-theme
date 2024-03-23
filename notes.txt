@@ -1,0 +1,24 @@
+firebase - self managed and self hosted backend service provided by Google so that we do not have to invest time in building the backend from scratch.
+can be used for android, ios applications, web applications.
+
+A database is a collection of organized data.
+Database is of 2 types:-
+1. SQL - data is stored in tables. 
+         mainly used when there is a lot of relational data.
+         Fast but difficult to scale.
+         Vertically scalable.
+
+2. NoSQL - data is not stored in table format
+           most popular - json objects
+           tables -> collections
+           tuples -> documents
+           Eg. a collection of students in the school database will have different json objects each representing one student
+           Horizontally scalable.
+
+Firestore is a nosql database.
+
+Every document in a collection has a unique ID.
+
+https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
+StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
+
