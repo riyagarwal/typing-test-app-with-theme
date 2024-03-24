@@ -11,6 +11,7 @@ const Footer = () => {
   const handleThemeChange = (e) => {
     setTheme(e.value);
     localStorage.setItem("theme", JSON.stringify(e.value));
+    // storing in localStorage to retain value after page refresh
   };
 
   return (

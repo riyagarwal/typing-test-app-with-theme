@@ -1,5 +1,8 @@
+// createGlobalStyle allows to create global component
 import { createGlobalStyle } from "styled-components";
 
+// the GlobalStyles is now a react component
+// Here we are invoking createGlobalStyle
 export const GlobalStyles = createGlobalStyle`
 
     body{
@@ -9,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
     }
 
+    // avoiding scrollbar at the userpage
     body::-webkit-scrollbar{
         display: none;
     }
@@ -16,7 +20,8 @@ export const GlobalStyles = createGlobalStyle`
     .canvas{
         display: grid;
         min-height: 100vh;
-        grid-auto-flow: row;
+        // rows are decided automatically
+        grid-auto-flow: row; 
         gap: 0.5rem;
         text-align: center;
         align-items: center;
@@ -28,6 +33,7 @@ export const GlobalStyles = createGlobalStyle`
         height: 140px;
         margin-left: auto;
         margin-right: auto;
+        // text overflowing horizontally so used below css
         overflow: hidden;
     }
 
@@ -145,8 +151,12 @@ export const GlobalStyles = createGlobalStyle`
         padding: 5px;
         margin: auto;
         margin-top: 50px;
-        border: 1px solid #91E4D1;
+        border: 1px solid ${({ theme }) => theme.background};
         border-radius: 10px;
+    }
+
+    .restart:hover{
+        background-color: ${({ theme }) => theme.background};
     }
 
     .header, .footer{
@@ -169,30 +179,37 @@ export const GlobalStyles = createGlobalStyle`
     .table, .user-page-graph{
         width: 1000px;
         margin: auto;
+        margin-bottom: 30px;
+    }
+
+    .table{
+        margin-bottom: 80px;
     }
 
     .user-info{
         width: 1000px;
         margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
         display: flex;
         background: ${({ theme }) => theme.titleColor};
-        min-height: 15rem;
         color: ${({ theme }) => theme.background};
         border-radius: 20px;
     }
+
     .user{
         width: 50%;
         display: flex;
         margin-top: 30px;
         margin-bottom: 30px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         border-right: 2px solid;
+        align-items: center;
     }
 
     .info{
         width: 60%;
         padding: 1rem;
-        margin-top: 1rem;
     }
     .picture{
         width: 40%;

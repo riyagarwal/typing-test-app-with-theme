@@ -14,11 +14,26 @@ Database is of 2 types:-
            tuples -> documents
            Eg. a collection of students in the school database will have different json objects each representing one student
            Horizontally scalable.
+           Data is dumped and not stored in an order.
 
 Firestore is a nosql database.
+indexing - index is assigned to all the documents for faster searching and querying operations.
+Firebase compulsorily asks for indexing when applying sorting to the db.
 
 Every document in a collection has a unique ID.
+
+The get() method of firestore db returns a querySnapshot object. 
 
 https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
 StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
 
+The styled-component package allows to export css as a react component
+https://styled-components.com/
+
+react-firebase-hooks documentation:- https://www.unpkg.com/browse/react-firebase-hooks@2.2.0/auth/README.md
+
+random-words module has been used to generate random words.
+Each word is wrapped in a span. (wordSpan)
+Each word is further divided into spans of characters. (charSpan)
+
+reference website:- monkeytype.com

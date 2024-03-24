@@ -5,6 +5,7 @@ export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
 
+  // parsing to avoid extra double quotes
   const defaultValue = JSON.parse(localStorage.getItem('theme')) || themeOptions[2].value  
   const [theme, setTheme] = useState(defaultValue);
 

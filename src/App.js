@@ -26,7 +26,11 @@ function App() {
         pauseOnHover
         theme="light"
       />
+
+      {/* using the styles component */}
+      {/* It has access to all the divs below and at the same level of this <GlobalStyles /> */}
       <GlobalStyles />
+
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/user' element={<UserPage/>} />

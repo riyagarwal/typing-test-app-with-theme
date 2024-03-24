@@ -1,8 +1,9 @@
-import React, { createRef, useEffect, useMemo, useRef, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
 import { useTestMode } from "../Context/TestModeContext";
 import Stats from "./Stats";
 import UpperMenu from "./UpperMenu";
 
+// random-words module returns a function
 var randomWords = require("random-words");
 
 const TypingBox = () => {
@@ -71,6 +72,7 @@ const TypingBox = () => {
     setGraphData([]);
     setCorrectWords(0);
     resetWordSpanRef();
+    focusInput()
   };
 
   const resetWordSpanRef = () => {
@@ -222,8 +224,9 @@ const TypingBox = () => {
               {words.map((word, index) => (
                 <span className="word" ref={wordSpanRef[index]}>
                   {word.split("").map((char) => (
-                    <span>{char}</span>
+                    <span className="char">{char}</span>
                   ))}
+                  {/* split function returns an array */}
                 </span>
               ))}
             </div>

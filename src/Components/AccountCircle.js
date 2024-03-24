@@ -14,6 +14,7 @@ const AccountCircle = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
   const [user] = useAuthState(auth);
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -35,10 +36,7 @@ const AccountCircle = () => {
 
   const logout = () => {
     auth.signOut().then((res) => {
-      toast.success("logged out", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
+      toast.success("Logged out", {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -82,6 +80,7 @@ const AccountCircle = () => {
         onClick={handleUserIconClick}
       />
       {user && <LogoutIcon onClick={logout} />}
+
       <Modal
         open={open}
         onClose={handleClose}

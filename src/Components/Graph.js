@@ -22,25 +22,25 @@ ChartJS.register(
   Legend
 );
 
-
-
-const Graph = ({graphData}) => {
-  const {theme} = useContext(ThemeContext);
+const Graph = ({ graphData }) => {
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
-      <Line data={
-        {
-          labels: graphData.map(i=>{return i[0]}),
+      <Line
+        data={{
+          labels: graphData.map((i) => {
+            return i[0];
+          }),
           datasets: [
             {
-              data: graphData.map(i=>i[1]),
-              label: 'wpm',
-              borderColor: theme.titleColor
-            }
-          ]
-        }
-      } />
+              data: graphData.map((i) => i[1]),
+              label: "wpm",
+              borderColor: theme.titleColor,
+            },
+          ],
+        }}
+      />
     </>
   );
 };
