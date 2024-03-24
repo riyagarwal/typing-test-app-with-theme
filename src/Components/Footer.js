@@ -16,12 +16,19 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="links">
-        <a href="https://github.com/riyagarwal" style={{ color: "inherit" }}>
+        <a
+          href="https://github.com/riyagarwal"
+          target="_blank"
+          rel="noreferrer"
+          style={{ color: "inherit" }}
+        >
           <GitHubIcon />
         </a>
 
         <a
           href="https://www.linkedin.com/in/riya-agarwal445/"
+          target="_blank"
+          rel="noreferrer"
           style={{ color: "inherit" }}
         >
           <LinkedInIcon />

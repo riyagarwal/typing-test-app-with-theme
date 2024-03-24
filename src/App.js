@@ -1,9 +1,6 @@
 import { ToastContainer } from "react-toastify";
-import Header from "./Components/Header";
-import TypingBox from "./Components/TypingBox";
 import { GlobalStyles } from "./Styles/global";
 import "react-toastify/dist/ReactToastify.css";
-import Footer from "./Components/Footer";
 import { useContext } from "react";
 import { ThemeContext } from "./Context/ThemeContext";
 import { ThemeProvider } from "styled-components";
