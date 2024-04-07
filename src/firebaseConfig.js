@@ -8,12 +8,12 @@ import "firebase/compat/firestore";
 // this config is unique to every user
 // taken from the console.firebase.google.com typing test project
 const firebaseConfig = {
-  apiKey: "AIzaSyD8kNn6nNWQo1JdLjB_uhoNC_a7uMeJnZw",
-  authDomain: "typing-test-d9eea.firebaseapp.com",
-  projectId: "typing-test-d9eea",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: "typing-test-d9eea.appspot.com",
-  messagingSenderId: "833521580531",
-  appId: "1:833521580531:web:8bd1c1ec10f5e2c7fa3a86",
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
   measurementId: "G-Q6JRBN3W5C"
 };
 
