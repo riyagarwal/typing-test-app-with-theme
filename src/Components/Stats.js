@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { auth, db } from "../firebaseConfig";
 import Graph from "./Graph";
-import { Button } from "@mui/icons-material";
 
 const Stats = ({
   wpm,
@@ -23,6 +22,7 @@ const Stats = ({
       timeSet.add(i[0]);
       return i;
     }
+    else return false
   });
 
   const pushToDb = () => {
@@ -44,7 +44,8 @@ const Stats = ({
       return;
     }
 
-    // add data to db in json format (key-value pairs)
+    // add data to db in json format (key-value pairs).
+    // adds a new document to a collection with a unique auto-generated ID
     resultRef
       .add({
         wpm: wpm,
@@ -54,6 +55,7 @@ const Stats = ({
         userId: uid,
       })
       .then((res) => {
+        // res contains the id of the document created
         toast.success("Data pushed to db!", {
           closeOnClick: true,
           pauseOnHover: true,
@@ -63,6 +65,7 @@ const Stats = ({
         });
       })
       .catch((err) => {
+        console.log(err)
         toast.error("Unable to save data", {
           closeOnClick: true,
           pauseOnHover: true,
